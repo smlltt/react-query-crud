@@ -6,6 +6,8 @@ export default {
     secondary: "#63BAAA",
     tertiary: "#FCEAFF",
     quaternary: "#8972A3",
+    black: "#111111",
+    white: "#FCEAFF",
   },
   space: [0, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
@@ -26,11 +28,19 @@ export default {
     small: "0 0 4px rgba(0, 0, 0, .125)",
     large: "0 0 24px rgba(0, 0, 0, .125)",
   },
-  variants: {},
+  variants: {
+    primaryButton: {
+      display: "inline-block",
+      p: 2,
+      color: "white",
+      bg: "primary",
+      borderRadius: 2,
+    },
+  },
   text: {
     color: {
-      dark: "#111111",
-      light: "#FCEAFF",
+      dark: "black",
+      light: "white",
     },
   },
 };

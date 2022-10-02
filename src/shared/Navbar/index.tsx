@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex } from "rebass";
+import { Flex, Image } from "rebass/styled-components";
 import { Link } from "react-router-dom";
 import theme from "config/theme";
 import routes from "config/routes";
@@ -16,6 +16,7 @@ const Navbar = () => {
       py={2}
     >
       <Container>
+        <Image src={"/react-query-logo.svg"} size={20} />
         <Flex justifyContent={"space-between"} width={"100%"} px={2}>
           <StyledLink to={home}>React Query CRUD</StyledLink>
           <StyledLink to={createBook}>+ Add new book</StyledLink>
