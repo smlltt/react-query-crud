@@ -7,7 +7,7 @@ interface ContainerProps {
 
 const Container = ({ children }: ContainerProps) => {
   return (
-    <Flex maxWidth={1024} width={"100%"}>
+    <Flex maxWidth={1024} width={"100%"} mx={"auto"}>
       {children}
     </Flex>
   );

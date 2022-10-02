@@ -1,4 +1,5 @@
 import Navbar from "./Navbar";
 import Container from "./Container";
+import Loader from "./Loader";
 
-export { Navbar, Container };
+export { Navbar, Container, Loader };
