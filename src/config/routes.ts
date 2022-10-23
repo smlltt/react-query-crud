@@ -1,5 +1,5 @@
 export default {
   home: "/",
-  updateBook: "/update-book",
+  updateBook: "/update-book/:id",
   createBook: "/create-book",
 };

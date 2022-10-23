@@ -35,6 +35,9 @@ export default {
       color: "white",
       bg: "primary",
       borderRadius: 2,
+      ":hover": {
+        cursor: "pointer",
+      },
     },
   },
   text: {

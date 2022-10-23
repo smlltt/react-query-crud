@@ -4,6 +4,7 @@ import { getAllBooks } from "api";
 import { Container, Loader } from "shared";
 import { BookListType } from "./types";
 import { Flex } from "rebass";
+import BookItem from "../BookItem";
 
 const BookList = () => {
   const { data, error, isLoading, isError } = useQuery<BookListType, Error>(
@@ -16,11 +17,14 @@ const BookList = () => {
 
   return (
     <Container>
-      <Flex flexDirection={"column"} alignItems={"center"} width={"100%"}>
+      <Flex
+        flexDirection={"column"}
+        alignItems={"center"}
+        width={"100%"}
+        pt={4}
+      >
         {data?.map(({ author, title, id }) => (
-          <div key={id}>
-            {author} - {title}
-          </div>
+          <BookItem author={author} title={title} id={id} key={id} />
         ))}
       </Flex>
     </Container>
