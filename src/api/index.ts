@@ -11,3 +11,11 @@ export const getAllBooks = async () => {
   }
   return response.data;
 };
+
+export const removeBook = async (id: string) => {
+  const response = await api.delete(`/books/${id}`);
+  if (response.status !== 200) {
+    throw new Error("Something went wrong");
+  }
+  return true;
+};

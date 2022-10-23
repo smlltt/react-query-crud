@@ -34,7 +34,7 @@ export default {
       p: 2,
       color: "white",
       bg: "primary",
-      borderRadius: 2,
+      borderRadius: 6,
       ":hover": {
         cursor: "pointer",
       },
