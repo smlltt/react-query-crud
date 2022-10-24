@@ -1,13 +1,20 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Input } from "@rebass/forms";
-import { Flex } from "rebass/styled-components";
+import { Input, Label } from "@rebass/forms/styled-components";
+import { Box, Flex } from "rebass/styled-components";
+import { BookType } from "components/BookList/types";
+import { FC } from "react";
+import { FormError } from "shared/atoms";
 
 type Inputs = {
   title: string;
   author: string;
 };
 
-const BookForm = () => {
+interface BookFormInterface {
+  initialValues?: BookType;
+}
+
+const BookForm: FC<BookFormInterface> = ({ initialValues }) => {
   const {
     register,
     handleSubmit,
@@ -19,15 +26,26 @@ const BookForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Flex
         flexDirection={"column"}
-        height={"160px"}
+        height={"180px"}
         justifyContent={"space-between"}
         mt={4}
       >
-        <Input defaultValue="test" {...register("title", { required: true })} />
-        {/*TODO create variant for form errors */}
-        {errors.title && <span>This field is required</span>}
-        <Input {...register("author", { required: true })} />
-        {errors.author && <span>This field is required</span>}
+        <Box>
+          <Label htmlFor="title">Title</Label>
+          <Input
+            {...register("title", { required: true })}
+            defaultValue={initialValues?.title}
+          />
+          {errors.title && <FormError />}
+        </Box>
+        <Box>
+          <Label htmlFor="author">Author</Label>
+          <Input
+            {...register("author", { required: true })}
+            defaultValue={initialValues?.author}
+          />
+          {errors.author && <FormError />}
+        </Box>
         <Flex
           onClick={handleSubmit(onSubmit)}
           variant={"primaryButton"}

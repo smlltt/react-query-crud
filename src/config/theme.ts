@@ -8,6 +8,7 @@ export default {
     quaternary: "#8972A3",
     black: "#111111",
     white: "#FCEAFF",
+    error: "#FF0000",
   },
   space: [0, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
@@ -43,11 +44,24 @@ export default {
       fontSize: [18, 20, 24],
       fontWeight: "heading",
     },
+    formError: {
+      color: "error",
+      fontSize: 12,
+    },
   },
   text: {
     color: {
       dark: "black",
       light: "white",
+    },
+  },
+  input: {
+    borderRadius: 6,
+    borderColor: "primary",
+    ":focus": {
+      outline: "none",
+      borderWidth: 2,
+      borderColor: "secondary",
     },
   },
 };

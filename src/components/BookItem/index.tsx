@@ -9,7 +9,7 @@ import { useMutation, useQueryClient } from "react-query";
 import theme from "config/theme";
 import { ThreeDots } from "react-loader-spinner";
 
-interface BookItemProps {
+export interface BookItemProps {
   author: string;
   title: string;
   id: string;

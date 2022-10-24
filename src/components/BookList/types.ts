@@ -1,4 +1,4 @@
-interface BookType {
+export interface BookType {
   id: string;
   author: string;
   title: string;
