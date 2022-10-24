@@ -22,6 +22,7 @@ const BookList = () => {
         alignItems={"center"}
         width={"100%"}
         pt={4}
+        justifyContent={"center"}
       >
         {data?.map(({ author, title, id }) => (
           <BookItem author={author} title={title} id={id} key={id} />

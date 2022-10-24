@@ -6,6 +6,9 @@ import styled from "styled-components";
 import { removeBook } from "api";
 import { useMutation, useQueryClient } from "react-query";
 
+import theme from "config/theme";
+import { ThreeDots } from "react-loader-spinner";
+
 interface BookItemProps {
   author: string;
   title: string;
@@ -29,7 +32,7 @@ const BookItem: FC<BookItemProps> = ({ author, title, id }) => {
       // TODO add line at the bottom for small screens
     >
       <Flex
-        width={[1, 1, 1 / 2]}
+        width={[1, 1, "60%"]}
         justifyContent={["center", "center", "flex-start"]}
         mb={[3, 3, 0]}
       >
@@ -38,8 +41,7 @@ const BookItem: FC<BookItemProps> = ({ author, title, id }) => {
       <Flex
         justifyContent={"center"}
         alignItems={"center"}
-        ml={"auto"}
-        width={[1, 1, 1 / 2]}
+        width={[1, 1, "40%"]}
       >
         <Flex
           style={{ textOverflow: "ellipsis", overflow: "hidden" }}
@@ -53,7 +55,11 @@ const BookItem: FC<BookItemProps> = ({ author, title, id }) => {
           onClick={isLoading ? undefined : handleRemoveClick}
           opacity={isLoading ? 0.5 : 1}
         >
-          Remove
+          {isLoading ? (
+            <ThreeDots height="15" color={theme.colors.tertiary} />
+          ) : (
+            <>Remove</>
+          )}
         </Box>
       </Flex>
     </Flex>

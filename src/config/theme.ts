@@ -17,7 +17,7 @@ export default {
   },
   fontWeights: {
     body: 400,
-    heading: 700,
+    heading: 500,
     bold: 700,
   },
   lineHeights: {
@@ -38,6 +38,10 @@ export default {
       ":hover": {
         cursor: "pointer",
       },
+    },
+    title: {
+      fontSize: [18, 20, 24],
+      fontWeight: "heading",
     },
   },
   text: {
