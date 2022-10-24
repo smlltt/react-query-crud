@@ -1,2 +1,4 @@
 import FormError from "./FormError";
-export { FormError };
+import ButtonWithLoaderContent from "./ButtonWithLoaderContent";
+
+export { FormError, ButtonWithLoaderContent };

@@ -5,9 +5,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { removeBook } from "api";
 import { useMutation, useQueryClient } from "react-query";
-
-import theme from "config/theme";
-import { ThreeDots } from "react-loader-spinner";
+import { ButtonWithLoaderContent } from "shared/atoms";
 
 export interface BookItemProps {
   author: string;
@@ -17,9 +15,11 @@ export interface BookItemProps {
 
 const BookItem: FC<BookItemProps> = ({ author, title, id }) => {
   const queryClient = useQueryClient();
-  const { mutateAsync: remove, isLoading } = useMutation(removeBook);
+  const { mutateAsync: remove, isLoading } = useMutation(() =>
+    removeBook(id, title)
+  );
   const handleRemoveClick = async () => {
-    await remove(id);
+    await remove();
     queryClient.invalidateQueries("books");
   };
   return (
@@ -55,11 +55,7 @@ const BookItem: FC<BookItemProps> = ({ author, title, id }) => {
           onClick={isLoading ? undefined : handleRemoveClick}
           opacity={isLoading ? 0.5 : 1}
         >
-          {isLoading ? (
-            <ThreeDots height="15" color={theme.colors.secondary} />
-          ) : (
-            <>Remove</>
-          )}
+          <ButtonWithLoaderContent isLoading={isLoading} text={"Remove"} />
         </Box>
       </Flex>
     </Flex>

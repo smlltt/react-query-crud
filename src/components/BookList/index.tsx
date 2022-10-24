@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "react-query";
-import { getAllBooks } from "api";
+import { getBooks } from "api";
 import { Container, Loader } from "shared";
 import { BookListType } from "./types";
 import { Flex } from "rebass";
@@ -9,7 +9,7 @@ import BookItem from "../BookItem";
 const BookList = () => {
   const { data, error, isLoading, isError } = useQuery<BookListType, Error>(
     "books",
-    getAllBooks
+    getBooks
   );
 
   if (isLoading) return <Loader />;
