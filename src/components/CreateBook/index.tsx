@@ -8,7 +8,11 @@ const CreateBook = () => {
     <Container>
       <Flex width={"90%"} flexDirection={"column"} pt={50}>
         <Box variant={"title"}>Create book</Box>
-        <BookForm />
+        <BookForm
+          onFormSubmit={(data) => console.log("data", data)}
+          // TODO isLoading value will be provided by react-query
+          isLoading={false}
+        />
       </Flex>
     </Container>
   );

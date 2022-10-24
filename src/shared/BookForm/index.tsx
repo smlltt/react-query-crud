@@ -2,8 +2,10 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { Input, Label } from "@rebass/forms/styled-components";
 import { Box, Flex } from "rebass/styled-components";
 import { BookType } from "components/BookList/types";
-import { FC } from "react";
+import React, { FC } from "react";
 import { FormError } from "shared/atoms";
+import { ThreeDots } from "react-loader-spinner";
+import theme from "../../config/theme";
 
 type Inputs = {
   title: string;
@@ -12,15 +14,21 @@ type Inputs = {
 
 interface BookFormInterface {
   initialValues?: BookType;
+  onFormSubmit: (data: Inputs) => void;
+  isLoading: boolean;
 }
 
-const BookForm: FC<BookFormInterface> = ({ initialValues }) => {
+const BookForm: FC<BookFormInterface> = ({
+  initialValues,
+  onFormSubmit,
+  isLoading,
+}) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => onFormSubmit(data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -51,7 +59,11 @@ const BookForm: FC<BookFormInterface> = ({ initialValues }) => {
           variant={"primaryButton"}
           justifyContent={"center"}
         >
-          Submit
+          {isLoading ? (
+            <ThreeDots height="15" color={theme.colors.secondary} />
+          ) : (
+            <>Submit</>
+          )}
         </Flex>
       </Flex>
     </form>

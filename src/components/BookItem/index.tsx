@@ -56,7 +56,7 @@ const BookItem: FC<BookItemProps> = ({ author, title, id }) => {
           opacity={isLoading ? 0.5 : 1}
         >
           {isLoading ? (
-            <ThreeDots height="15" color={theme.colors.tertiary} />
+            <ThreeDots height="15" color={theme.colors.secondary} />
           ) : (
             <>Remove</>
           )}
