@@ -1,5 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Flex } from "rebass";
+import { Input } from "@rebass/forms";
+import { Flex } from "rebass/styled-components";
 
 type Inputs = {
   title: string;
@@ -16,13 +17,24 @@ const BookForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Flex flexDirection={"column"}>
-        <input defaultValue="test" {...register("title", { required: true })} />
+      <Flex
+        flexDirection={"column"}
+        height={"160px"}
+        justifyContent={"space-between"}
+        mt={4}
+      >
+        <Input defaultValue="test" {...register("title", { required: true })} />
+        {/*TODO create variant for form errors */}
         {errors.title && <span>This field is required</span>}
-        <input {...register("author", { required: true })} />
+        <Input {...register("author", { required: true })} />
         {errors.author && <span>This field is required</span>}
-
-        <input type="submit" />
+        <Flex
+          onClick={handleSubmit(onSubmit)}
+          variant={"primaryButton"}
+          justifyContent={"center"}
+        >
+          Submit
+        </Flex>
       </Flex>
     </form>
   );
