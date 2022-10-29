@@ -1,7 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Input, Label } from "@rebass/forms/styled-components";
 import { Box, Flex } from "rebass/styled-components";
-import { BookType } from "components/BookList/types";
 import React, { FC } from "react";
 import { ButtonWithLoaderContent, FormError } from "shared/atoms";
 
@@ -12,7 +11,7 @@ export type BookFormInputs = {
 };
 
 interface BookFormInterface {
-  defaultValues?: BookType;
+  defaultValues?: BookFormInputs;
   onFormSubmit: (data: BookFormInputs) => void;
   isLoading: boolean;
 }

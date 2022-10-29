@@ -2,12 +2,15 @@ import React from "react";
 import { useMutation, useQuery } from "react-query";
 import { BookType } from "components/BookList/types";
 import { getBook, updateBook } from "api";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { BookForm, Container, Loader } from "shared";
 import { Flex } from "rebass";
 import { Box } from "rebass/styled-components";
+import { BookFormInputs } from "shared/BookForm";
+import routes from "config/routes";
 
 const UpdateBook = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const {
     data: defaultValues,
@@ -18,8 +21,9 @@ const UpdateBook = () => {
 
   const { mutateAsync: update, isLoading: isMutating } =
     useMutation(updateBook);
-  const handleUpdateBook = async (book: BookType) => {
-    await update(book);
+  const handleUpdateBook = async (book: BookFormInputs) => {
+    await update({ ...book, id: id || "" });
+    navigate(routes.home);
   };
 
   if (isLoading) return <Loader />;
@@ -29,11 +33,8 @@ const UpdateBook = () => {
     <Container>
       <Flex width={"90%"} flexDirection={"column"} pt={50}>
         <Box variant={"title"}>Update book</Box>
-        {/*data as BookType because when BookForm is used in the UpdateBook page, it will always have defaultValues which include an id.
-        But the id needs to be options in BookFormInputs, because the id is missing when BookForm is used in the CreateBook page
-        */}
         <BookForm
-          onFormSubmit={(data) => handleUpdateBook(data as BookType)}
+          onFormSubmit={(data) => handleUpdateBook(data)}
           isLoading={isMutating}
           defaultValues={defaultValues}
         />
