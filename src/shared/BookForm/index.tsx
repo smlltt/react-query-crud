@@ -8,6 +8,7 @@ import { ButtonWithLoaderContent, FormError } from "shared/atoms";
 export type BookFormInputs = {
   title: string;
   author: string;
+  id?: string;
 };
 
 interface BookFormInterface {

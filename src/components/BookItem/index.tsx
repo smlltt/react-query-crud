@@ -23,14 +23,7 @@ const BookItem: FC<BookItemProps> = ({ author, title, id }) => {
     queryClient.invalidateQueries("books");
   };
   return (
-    <Flex
-      width={1}
-      py={2}
-      alignItems={"center"}
-      flexWrap={"wrap"}
-      mb={4}
-      // TODO add line at the bottom for small screens
-    >
+    <Flex width={1} py={2} alignItems={"center"} flexWrap={"wrap"} mb={4}>
       <Flex
         width={[1, 1, "60%"]}
         justifyContent={["center", "center", "flex-start"]}
@@ -42,10 +35,13 @@ const BookItem: FC<BookItemProps> = ({ author, title, id }) => {
         justifyContent={"center"}
         alignItems={"center"}
         width={[1, 1, "40%"]}
+        flexDirection={["column", "column", "row"]}
       >
         <Flex
           style={{ textOverflow: "ellipsis", overflow: "hidden" }}
-          width={"200px"}
+          width={[1, 1, "200px"]}
+          justifyContent={["center", "center", "start"]}
+          mb={[3, 3, 0]}
         >
           {author}
         </Flex>
@@ -58,6 +54,12 @@ const BookItem: FC<BookItemProps> = ({ author, title, id }) => {
           <ButtonWithLoaderContent isLoading={isLoading} text={"Remove"} />
         </Box>
       </Flex>
+      <Box
+        mt={4}
+        display={["block", "block", "none"]}
+        variant={"divider"}
+        width={1}
+      />
     </Flex>
   );
 };

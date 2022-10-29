@@ -7,7 +7,7 @@ import { addBook } from "api";
 import { BookFormInputs } from "shared/BookForm";
 
 const CreateBook = () => {
-  const { mutate: add, isLoading } = useMutation(addBook);
+  const { mutateAsync: add, isLoading } = useMutation(addBook);
   const handleAddBook = async (book: BookFormInputs) => {
     await add(book);
   };

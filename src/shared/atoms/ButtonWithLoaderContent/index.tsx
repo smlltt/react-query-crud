@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { ThreeDots } from "react-loader-spinner";
-import theme from "../../../config/theme";
+import theme from "config/theme";
 
 interface ButtonWithLoaderContentProps {
   isLoading: boolean;
